@@ -23,6 +23,9 @@ scripts/MusicDataAnalysis/src/main/scala
 # Path to screenshots of script execution with results:
 
 screenshots/Data analysis
+
 screenshots/Data enrichment
+
 screenshots/Data formatting
+
 screenshots/Final results
