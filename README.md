@@ -20,7 +20,7 @@ The zip file uploaded here contains the scripts as well as Spark code written in
 
 scripts/MusicDataAnalysis/src/main/scala
 
-# Path to check screenshots of script execution along with results:
+# Path to screenshots of script execution with results:
 
 screenshots/Data analysis
 screenshots/Data enrichment
