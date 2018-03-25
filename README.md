@@ -1,31 +1,68 @@
-# Music-Data-Analysis
+Tested on: Spark 2.0
+-----------------------
 
-# Problem Statement
+Copy the project and uzip it
+Move the entire directory structure to /home/acadgild
 
-1. Determine top 10 station_id(s) where maximum number of songs were played, which were liked by unique users.
+Run mysql
+sudo service mysqld start
 
-2. Determine total duration of songs played by each type of user, where type of user can be 'subscribed' or 'unsubscribed'. An unsubscribed user is the one whose record is either not present in Subscribed_users lookup table or has subscription_end_date earlier than the timestamp of the song played by him.
+Make sure all the scripts in /home/acadgild/project/scripts have  774 permissions
+Run below command:
 
-3. Determine top 10 connected artists. Connected artists are those whose songs are most listened by the unique users who follow them.
+chmod 774 /home/acadgild/project/scripts/*
 
-4. Determine top 10 songs who have generated the maximum revenue. Royalty applies to a song only if it was liked or was completed successfully or both.
+Build the scala project
+-----------------------
+1. Install SBT
 
-5. Determine top 10 unsubscribed users who listened to the songs for the longest duration.
+References:
 
-# Solution:
+http://lancegatlin.org/tech/centos-6-install-sbt
+https://acadgild.com/blog/sbt-in-centos/
 
-The zip file uploaded here contains the scripts as well as Spark code written in Scala that are required to achieve required results.
+2. cd /home/acadgild/project/scripts/MusicDataAnalysis
 
-# Path to Spark code:
+sbt clean package
 
-scripts/MusicDataAnalysis/src/main/scala
 
-# Path to screenshots of script execution with results:
+Scripts:
+--------
+generate_web_data.py -- Generates some random data coming from web application
+python /home/acadgild/project/scripts/generate_web_data.py
 
-screenshots/Data analysis
+generate_mob_data.py -- Generates some random data coming from mobile application
+python /home/acadgild/project/scripts/generate_mob_data.py
 
-screenshots/Data enrichment
+sudo service mysqld start
 
-screenshots/Data formatting
+start-daemons.sh -- Launches all necessary daemons
+sh /home/acadgild/project/scripts/start-daemons.sh
 
-screenshots/Final results
+create_hive_hbase_lookup.sh -- Creates hive table over HBase
+sh /home/acadgild/project/scripts/create_hive_hbase_lookup.sh
+
+populate-lookup.sh -- Populates lookup tables
+sh /home/acadgild/project/scripts/populate-lookup.sh
+
+dataformatting.sh -- Performs data formatting
+sh /home/acadgild/project/scripts/dataformatting.sh
+
+data_enrichment.sh -- Performs data enrichment and cleaning
+sh /home/acadgild/project/scripts/data_enrichment.sh
+
+data_analysis.sh -- Performs data analysis
+sh /home/acadgild/project/scripts/data_analysis.sh
+
+Scheduling:
+-----------
+We'll be using crontab for job scheduling.
+Job has to run every 3 hours
+
+sudo crontab -e
+
+(Press i to enter insert mode)
+
+* */3 * * * /home/acadgild/project/scripts/wrapper.sh
+
+(Press Esc and then type :wq! and press Enter)
