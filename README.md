@@ -32,29 +32,42 @@ sbt clean package
 Scripts:
 --------
 generate_web_data.py -- Generates some random data coming from web application
+
 python /home/acadgild/project/scripts/generate_web_data.py
 
+
 generate_mob_data.py -- Generates some random data coming from mobile application
+
 python /home/acadgild/project/scripts/generate_mob_data.py
 
 sudo service mysqld start
 
 start-daemons.sh -- Launches all necessary daemons
+
 sh /home/acadgild/project/scripts/start-daemons.sh
 
+
 create_hive_hbase_lookup.sh -- Creates hive table over HBase
+
 sh /home/acadgild/project/scripts/create_hive_hbase_lookup.sh
 
+
 populate-lookup.sh -- Populates lookup tables
+
 sh /home/acadgild/project/scripts/populate-lookup.sh
 
+
 dataformatting.sh -- Performs data formatting
+
 sh /home/acadgild/project/scripts/dataformatting.sh
 
+
 data_enrichment.sh -- Performs data enrichment and cleaning
+
 sh /home/acadgild/project/scripts/data_enrichment.sh
 
 data_analysis.sh -- Performs data analysis
+
 sh /home/acadgild/project/scripts/data_analysis.sh
 
 Scheduling:
