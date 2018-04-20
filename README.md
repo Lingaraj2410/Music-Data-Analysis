@@ -4,7 +4,7 @@ Tested on: Spark 2.0
 Copy the project and uzip it
 Move the entire directory structure to /home/acadgild
 
-Run mysql
+Run MySQL
 sudo service mysqld start
 
 Make sure all the scripts in /home/acadgild/project/scripts have  774 permissions
@@ -16,13 +16,13 @@ Build the scala project
 -----------------------
 1. Install SBT
 
-References:
-
-http://lancegatlin.org/tech/centos-6-install-sbt
+Reference link:
 https://acadgild.com/blog/sbt-in-centos/
 
-2. cd /home/acadgild/project/scripts/MusicDataAnalysis
+2. Navigate to the following path to Spark source project:
+cd /home/acadgild/project/scripts/MusicDataAnalysis
 
+Run the command given below to build a JAR file for execution:
 sbt clean package
 
 
