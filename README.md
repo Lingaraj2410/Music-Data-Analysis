@@ -17,12 +17,15 @@ Build the scala project
 1. Install SBT
 
 Reference link:
+
 https://acadgild.com/blog/sbt-in-centos/
 
 2. Navigate to the following path to Spark source project:
+
 cd /home/acadgild/project/scripts/MusicDataAnalysis
 
 Run the command given below to build a JAR file for execution:
+
 sbt clean package
 
 
